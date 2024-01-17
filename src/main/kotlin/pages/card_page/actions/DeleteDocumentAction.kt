@@ -12,16 +12,13 @@ import org.example.utils.ScreenShotUtil
 class DeleteDocumentAction(
     val data: CardPageAction.DeleteDocument
 ) : Action {
+    val json =  Json {prettyPrint = true}
 
     override fun runAction(testState: TestState?, page: Page) {
         Allure.step() {
             it.name(data.javaClass.simpleName)
-
-            val json =  Json {prettyPrint = true}
             Allure.addAttachment("STATE",json.encodeToString(testState))
-            page.apply {
-                testState?.testDocuments?.remove(data.testDocument)
-            }
+            testState?.testDocuments?.remove(data.testDocument)
             ScreenShotUtil.saveScreenShot("screen",page)
         }
     }

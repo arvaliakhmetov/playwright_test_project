@@ -15,6 +15,7 @@ import pages.login_page.LoginPageAction
 class LoginAction(
     private val data: LoginPageAction.Login,
 ) : Action {
+    val json = Json {prettyPrint = true}
 
     override fun runAction(testState: TestState?, page: Page) {
         Allure.step() {
@@ -30,7 +31,6 @@ class LoginAction(
             page.click(
                 configuredPath(LoginPageXPaths.BUTTON, "Войти")
             )
-            val json = Json {prettyPrint = true}
             Allure.addAttachment("props", json.encodeToString(data.user))
         }
     }
