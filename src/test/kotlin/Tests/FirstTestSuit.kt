@@ -29,7 +29,7 @@ class FirstTestSuit: BaseTest() {
             documentType = "Неформализованный",
             contrAgent = contract.name,
             contractNumber = contract.contract,
-            DocumentAttributeGenerator.getCurrentDate("dd.MM.yyyy")
+            date = DocumentAttributeGenerator.getCurrentDate("dd.MM.yyyy")
         )
 
         testActionExecutor.executeAction(
@@ -51,7 +51,7 @@ class FirstTestSuit: BaseTest() {
             documentType = "Неформализованный",
             contrAgent = contract.name,
             contractNumber = contract.contract,
-            DocumentAttributeGenerator.getCurrentDate("dd.MM.yyyy")
+            date = DocumentAttributeGenerator.getCurrentDate("dd.MM.yyyy")
         )
 
         testActionExecutor.executeAction(
@@ -73,7 +73,7 @@ class FirstTestSuit: BaseTest() {
             documentType = "Неформализованный",
             contrAgent = contract.name,
             contractNumber = contract.contract,
-            DocumentAttributeGenerator.getCurrentDate("dd.MM.yyyy")
+            date = DocumentAttributeGenerator.getCurrentDate("dd.MM.yyyy")
         )
 
         testActionExecutor.executeAction(
