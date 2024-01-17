@@ -2,6 +2,8 @@ package org.example.pages.login_page.actions
 
 import com.microsoft.playwright.Page
 import io.qameta.allure.Allure
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.example.core.Action
 import org.example.core.XpathUtil.configuredPath
 import org.example.data.TestState
@@ -28,8 +30,8 @@ class LoginAction(
             page.click(
                 configuredPath(LoginPageXPaths.BUTTON, "Войти")
             )
-            ScreenShotUtil.saveScreenShot("dummy_shot", page)
-            Allure.addAttachment("props", data.user.name)
+            val json = Json {prettyPrint = true}
+            Allure.addAttachment("props", json.encodeToString(data.user))
         }
     }
 }

@@ -1,7 +1,9 @@
 package org.example.data
 
+import kotlinx.serialization.Serializable
 import org.example.utils.test_entity.TestDocument
 
+@Serializable
 data class TestState(
     val documentName: String? = "",
     val docStatus: String = "",
