@@ -1,7 +1,8 @@
 package org.example.utils.test_entity
 
 data class TestDocument (
-    val name: String? = null,
+    val autoTestNumber: Int,
+    val name: String,
     val documentKind: String,
     val documentType: String,
     val contrAgent: String,

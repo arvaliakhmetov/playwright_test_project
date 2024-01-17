@@ -5,6 +5,6 @@ import org.example.core.PageAction
 
 sealed interface MainPageAction: PageAction {
 
-    data class CreateDocument(val document: TestDocument): MainPageAction
+    data class OpenNewDocument(val document: TestDocument): MainPageAction
 
 }

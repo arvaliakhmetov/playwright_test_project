@@ -4,5 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class StandConfiguration(
-    val url: String
+    val url: String,
+    val contracts: HashMap<String,ContractData>
 )

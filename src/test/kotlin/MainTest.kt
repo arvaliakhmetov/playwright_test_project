@@ -1,9 +1,6 @@
 package org.example
 
-import com.microsoft.playwright.Browser
-import com.microsoft.playwright.BrowserContext
-import com.microsoft.playwright.Page
-import com.microsoft.playwright.Playwright
+import com.microsoft.playwright.*
 import org.example.configs.TestConfig
 import org.example.core.TestActionExecutor
 import org.junit.jupiter.api.*
@@ -23,7 +20,7 @@ open class BaseTest {
     fun createContextAndPage() {
         playwright = Playwright.create()
         //BrowserType.LaunchOptions().setHeadless(false)
-        browser = playwright.chromium().launch()
+        browser = playwright.chromium().launch(BrowserType.LaunchOptions().setHeadless(false))
         context = browser.newContext()!!
         val newpage = context.newPage()
         newpage.setDefaultTimeout(50000.0)
