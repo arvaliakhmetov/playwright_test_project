@@ -15,7 +15,7 @@ object TestConfig {
 
     fun init() {
         val standNumber = System.getProperty("stand")
-        val standConfigPath = "configurations/$standNumber/stand.json" // Adjust the path accordingly
+        val standConfigPath = "configurations/$standNumber/stand.json"
         val usersConfigPath = "configurations/$standNumber/users.json"
         standConfigs = Json.decodeFromStream(FileInputStream(standConfigPath))
         usersConfig = Json.decodeFromStream(FileInputStream(usersConfigPath))
