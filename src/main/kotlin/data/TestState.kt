@@ -5,7 +5,7 @@ import org.example.utils.test_entity.TestDocument
 
 @Serializable
 data class TestState(
-    val documentName: String? = "",
+    var documentName: String? = "",
     val docStatus: String = "",
     val someState: String = "",
     var testDocuments: MutableList<TestDocument> = mutableListOf()

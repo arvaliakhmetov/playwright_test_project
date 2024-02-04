@@ -1,37 +1,40 @@
 package org.example.pages.login_page.actions
 
 import com.microsoft.playwright.Page
-import io.qameta.allure.Allure
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.example.core.Action
-import org.example.core.XpathUtil.configuredPath
+import org.example.core.Action.XpathUtil.configuredPath
+import org.example.core.PageEvent
+import org.example.core.allure.addAllureAttachment
+import org.example.core.allure.createAllureStep
 import org.example.data.TestState
 import org.example.pages.login_page.configs.LoginPageXPaths
-import org.example.utils.ScreenShotUtil
-import pages.login_page.LoginPageAction
+import pages.login_page.LoginPageEvent
 
 
 class LoginAction(
-    private val data: LoginPageAction.Login,
-) : Action {
-    val json = Json {prettyPrint = true}
+    data: LoginPageEvent.Login,
+    testState: TestState,
+    page: Page
+) : Action(data, testState, page) {
 
-    override fun runAction(testState: TestState?, page: Page) {
-        Allure.step() {
-            it.name(data.javaClass.simpleName)
-            page.fill(
+    override fun runAction(data: PageEvent, testState: TestState, page: Page) {
+        val json = Json {prettyPrint = true}
+        data as LoginPageEvent.Login
+        page.createAllureStep("Логин") {
+            fill(
                 configuredPath(LoginPageXPaths.INPUT, "Имя пользователя"),
                 data.user.login
             )
-            page.fill(
+            fill(
                 configuredPath(LoginPageXPaths.INPUT, "Пароль"),
                 data.user.password
             )
-            page.click(
+            click(
                 configuredPath(LoginPageXPaths.BUTTON, "Войти")
             )
-            Allure.addAttachment("props", json.encodeToString(data.user))
+            addAllureAttachment("props", json.encodeToString(data.user).byteInputStream(Charsets.UTF_8))
         }
     }
 }

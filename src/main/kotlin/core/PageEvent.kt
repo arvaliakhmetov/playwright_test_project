@@ -1,7 +1,7 @@
 package org.example.core
 
 
-interface PageAction
+interface PageEvent
 
 
 

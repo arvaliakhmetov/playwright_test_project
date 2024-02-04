@@ -1,25 +1,29 @@
 package org.example.pages.card_page.actions
 
 import com.microsoft.playwright.Page
-import io.qameta.allure.Allure
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.example.core.Action
+import org.example.core.PageEvent
+import org.example.core.allure.addAllureAttachment
+import org.example.core.allure.createAllureStep
+import org.example.core.allure.takeAllureScreenShot
 import org.example.data.TestState
-import org.example.pages.card_page.CardPageAction
-import org.example.utils.ScreenShotUtil
+import org.example.pages.card_page.CardPageEvent
 
 class DeleteDocumentAction(
-    val data: CardPageAction.DeleteDocument
-) : Action {
-    val json =  Json {prettyPrint = true}
+    data: CardPageEvent.DeleteDocument,
+    testState: TestState,
+    page: Page
+) : Action(data, testState, page) {
 
-    override fun runAction(testState: TestState?, page: Page) {
-        Allure.step() {
-            it.name(data.javaClass.simpleName)
-            Allure.addAttachment("STATE",json.encodeToString(testState))
-            testState?.testDocuments?.remove(data.testDocument)
-            ScreenShotUtil.saveScreenShot("screen",page)
+
+    override fun runAction(data: PageEvent, testState: TestState, page: Page) {
+        data as CardPageEvent.DeleteDocument
+        page.createAllureStep("Удаление документа") {
+            addAllureAttachment("STATE", json.encodeToString(testState).byteInputStream(Charsets.UTF_8))
+            testState.testDocuments.remove(data.testDocument)
+            takeAllureScreenShot()
         }
     }
 }

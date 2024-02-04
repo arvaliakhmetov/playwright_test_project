@@ -1,7 +1,8 @@
 package org.example.pages.card_page.utills
 
-
-
+/**
+ * Пути для действий в CardPage
+ */
 object CardPageXPaths {
     const val SPINNER = "//img[@src='/UZDO/webjars/dojox/widget/Standby/images/loading.gif']"
     const val TOOLBAR_BUTTON = "//div[@role='tabpanel' and contains(@class,'dijitVisible') and contains(@aria-labelledby,'Card') or contains(@id,'DocumentResolver')]//div[@role='toolbar' and not(contains(@style,'display: none;'))]//span[@aria-disabled='false']//span[@class[contains(.,'Button')] and text()='%1%']"

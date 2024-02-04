@@ -1,8 +1,9 @@
-package org.example
+package org.example.base
 
+import base.TestActionExecutor
 import com.microsoft.playwright.*
 import org.example.configs.TestConfig
-import org.example.core.TestActionExecutor
+import org.example.data.TestState
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.parallel.Execution
 import org.junit.jupiter.api.parallel.ExecutionMode
@@ -25,7 +26,7 @@ open class BaseTest {
         val newpage = context.newPage()
         newpage.setDefaultTimeout(50000.0)
         page = newpage
-        testActionExecutor = TestActionExecutor(page,null)
+        testActionExecutor = TestActionExecutor(page, TestState())
     }
 
     @AfterEach
