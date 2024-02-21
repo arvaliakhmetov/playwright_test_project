@@ -7,6 +7,8 @@ import org.example.data.TestState
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.parallel.Execution
 import org.junit.jupiter.api.parallel.ExecutionMode
+import java.nio.file.Paths
+import kotlin.io.path.Path
 
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 @Execution(ExecutionMode.CONCURRENT)
@@ -21,8 +23,13 @@ open class BaseTest {
     fun createContextAndPage() {
         playwright = Playwright.create()
         //BrowserType.LaunchOptions().setHeadless(false)
-        browser = playwright.chromium().launch(BrowserType.LaunchOptions().setHeadless(false))
-        context = browser.newContext()!!
+        val launchOptions = BrowserType.LaunchOptions().setHeadless(false).setArgs(
+                listOf(
+                    "--disable-extensions-except=./data/cryptopro"
+                )
+            )
+        browser = playwright.chromium().launch(launchOptions)
+        context = browser.newContext()
         val newpage = context.newPage()
         newpage.setDefaultTimeout(50000.0)
         page = newpage

@@ -48,10 +48,10 @@ tasks.test {
     useJUnitPlatform()
     delete("allure-results")
     jvmArgs = listOf(
-        "-javaagent:${agent.singleFile}"
+        "-javaagent:${agent.singleFile}",
     )
+    environment("SELENIUM_REMOTE_URL","http://172.19.253.41:4444")
     systemProperties["stand"] = System.getProperty("stand")
-
     systemProperties["junit.jupiter.execution.parallel.enabled"] = true
     systemProperties["junit.jupiter.execution.parallel.mode.default"] = "concurrent"
 

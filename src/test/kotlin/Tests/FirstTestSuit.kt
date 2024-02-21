@@ -37,29 +37,53 @@ class FirstTestSuit: BaseTest() {
                 CardPageEvent.DeleteDocument(testDocument)
             )
         }
-
-
     }
-//    @Test
-//    fun dummyTest2(){
-//        val user = TestConfig.getUser("Зельцер")
-//        val contract = TestConfig.standConfigs.contracts["ost1_ost2"]!!
-//        val testDocument = TestDocument(
-//            autoTestNumber = 1,
-//            name = DocumentAttributeGenerator.generateDocumentName(),
-//            documentKind = "Детализация",
-//            documentType = "Неформализованный",
-//            contrAgent = contract.name,
-//            contractNumber = contract.contract,
-//            date = DocumentAttributeGenerator.getCurrentDate("dd.MM.yyyy")
-//        )
-//
-//        testActionExecutor.executeAction(
-//            UtilPage(UtilPageAction.Navigate(TestConfig.standConfigs.url)),
-//            LoginPage(LoginPageEvent.Login(user)),
-//            MainPage(MainPageEvent.OpenNewDocument(testDocument)),
-//            CardPage(CardPageEvent.FillNewDocument(testDocument, save = true, close = false)),
-//            CardPage(CardPageEvent.DeleteDocument(testDocument))
-//        )
-//    }
+    @Test
+    fun dummyTest1(){
+        val user = TestConfig.getUser("Зельцер")
+        val contract = TestConfig.standConfigs.contracts["ost1_ost2"]!!
+        val testDocument = TestDocument(
+            autoTestNumber = 1,
+            name = DocumentAttributeGenerator.generateDocumentName(),
+            documentKind = "Детализация",
+            documentType = "Неформализованный",
+            contrAgent = contract.name,
+            contractNumber = contract.contract,
+            date = DocumentAttributeGenerator.getCurrentDate("dd.MM.yyyy")
+        )
+
+        testActionExecutor.executeAction {
+            utilPageEventRouter(UtilPageEvent.Navigate(TestConfig.standConfigs.url))
+            loginPageEventRouter(LoginPageEvent.Login(user))
+            mainPageEventRouter(MainPageEvent.OpenNewDocument(testDocument))
+            cardPageEventRouter(
+                CardPageEvent.FillNewDocument(testDocument, save = true, close = false),
+                CardPageEvent.DeleteDocument(testDocument)
+            )
+        }
+    }
+    @Test
+    fun dummyTest2(){
+        val user = TestConfig.getUser("Зельцер")
+        val contract = TestConfig.standConfigs.contracts["ost1_ost2"]!!
+        val testDocument = TestDocument(
+            autoTestNumber = 1,
+            name = DocumentAttributeGenerator.generateDocumentName(),
+            documentKind = "Детализация",
+            documentType = "Неформализованный",
+            contrAgent = contract.name,
+            contractNumber = contract.contract,
+            date = DocumentAttributeGenerator.getCurrentDate("dd.MM.yyyy")
+        )
+
+        testActionExecutor.executeAction {
+            utilPageEventRouter(UtilPageEvent.Navigate(TestConfig.standConfigs.url))
+            loginPageEventRouter(LoginPageEvent.Login(user))
+            mainPageEventRouter(MainPageEvent.OpenNewDocument(testDocument))
+            cardPageEventRouter(
+                CardPageEvent.FillNewDocument(testDocument, save = true, close = false),
+                CardPageEvent.DeleteDocument(testDocument)
+            )
+        }
+    }
 }
