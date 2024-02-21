@@ -50,7 +50,7 @@ tasks.test {
     jvmArgs = listOf(
         "-javaagent:${agent.singleFile}",
     )
-    environment("SELENIUM_REMOTE_URL","http://172.19.253.75:4444")
+    //environment("SELENIUM_REMOTE_URL","http://172.19.253.75:4444")
     systemProperties["stand"] = System.getProperty("stand")
     systemProperties["junit.jupiter.execution.parallel.enabled"] = true
     systemProperties["junit.jupiter.execution.parallel.mode.default"] = "concurrent"
