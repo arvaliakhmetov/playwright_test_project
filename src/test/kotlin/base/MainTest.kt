@@ -23,12 +23,7 @@ open class BaseTest {
     fun createContextAndPage() {
         playwright = Playwright.create()
         //BrowserType.LaunchOptions().setHeadless(false)
-        val launchOptions = BrowserType.LaunchOptions().setHeadless(false).setArgs(
-                listOf(
-                    "--disable-extensions-except=./data/cryptopro"
-                )
-            )
-        browser = playwright.chromium().launch(launchOptions)
+        browser = playwright.chromium().launch(BrowserType.LaunchOptions().setHeadless(false))
         context = browser.newContext()
         val newpage = context.newPage()
         newpage.setDefaultTimeout(50000.0)

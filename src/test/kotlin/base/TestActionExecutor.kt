@@ -29,7 +29,7 @@ class TestActionExecutor(
     }
 
 
-    fun executeAction(pageActions: Router.() -> Unit)= pageActions.invoke(router)
+    fun executeAction(pageActions: Router.() -> Unit)= pageActions(router)
 
     fun executeCustomAction(pageForActions: (Page) -> Unit) = pageForActions(page)
 
