@@ -1,7 +1,12 @@
 package org.example.core
 
 
-interface PageEvent
+sealed interface PageEvent {
+    interface KEDO : PageEvent
+
+    interface SBER : PageEvent
+    interface SHARED : PageEvent
+}
 
 
 
